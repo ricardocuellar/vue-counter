@@ -1,5 +1,5 @@
 <template>
-    <h2>Counter!!!</h2>
+    <h2>{{ customTitle }}</h2>
 
     <p>{{ counter }} <sup>2</sup> = {{squareCounter}}</p>
    
@@ -13,13 +13,26 @@
 
 <script>
 export default {
+    //Definiendo properties: props.
+    //props:  ['title','start'],
+    props:  {
+        title: String,
+        start: {
+            type: Number,
+            default: 100,
+            //required: true
+            validator(value){
+                return value >= 0
+            }
+        }
+    },
     //name: 'Counter',
     //data() objeto de manera reactiva.
     //Vue mantiene el estado de la aplicación
     //Se busca que los componentes no hagan calculos matemáticos.
     data(){
         return{
-            counter: 5
+            counter: this.start
         }
     },
     //Se computa las veces que la llame.
@@ -44,6 +57,9 @@ export default {
         squareCounter(){
             console.log("Call by computed")
             return this.counter * this.counter
+        },
+        customTitle(){
+            return this.title || 'Counter'
         }
     }
 }
