@@ -1,11 +1,13 @@
 <template>
+<!--
   <img alt="Vue logo" src="./assets/logo.png">
-
   <Counter :start="101"/>
+-->
 <!--v-bind: ocupa JS en las properties. se puede resumir
 como dos puntos : <Counter v-bind:start="15" />
 -->
 
+  <Indecision />
 
 <!--Properties o atributos. Si se define en props se reconoce como prop y no como atributo
 <Counter /> 
@@ -15,12 +17,13 @@ como dos puntos : <Counter v-bind:start="15" />
 </template>
 
 <script>
-import Counter from './components/Counter.vue'
-
+//import Counter from './components/Counter.vue'
+import Indecision from './components/Indecision.vue'
 export default {
   name: 'App',
   components:{
-    Counter
+    //Counter
+    Indecision
   }
 }
 </script>
