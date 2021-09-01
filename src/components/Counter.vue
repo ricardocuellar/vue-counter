@@ -3,7 +3,9 @@
 
     <p>{{ counter }} <sup>2</sup> = {{squareCounter}}</p>
    
-    <div>
+    <p data-testid="counter">{{ counter }}</p>
+
+    <div class="buttons-container">
         <button @click="increase">+1</button>
         <button @click="decrease">-1</button>
     </div>
@@ -38,7 +40,7 @@ export default {
     //Se computa las veces que la llame.
     methods:{
         getSquareValue(){
-            console.log("Call by methods")
+            //console.log("Call by methods")
             return this.counter * this.counter  
         },
         //Increase, decrease. 
@@ -55,7 +57,7 @@ export default {
     //Se computa cuando el counter vuelva a cambiar.
     computed: {
         squareCounter(){
-            console.log("Call by computed")
+            //console.log("Call by computed")
             return this.counter * this.counter
         },
         customTitle(){

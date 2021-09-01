@@ -1,12 +1,21 @@
-import { shallowMount } from '@vue/test-utils'
-import HelloWorld from '@/components/HelloWorld.vue'
 
-describe('HelloWorld.vue', () => {
-  it('renders props.msg when passed', () => {
-    const msg = 'new message'
-    const wrapper = shallowMount(HelloWorld, {
-      props: { msg }
-    })
-    expect(wrapper.text()).toMatch(msg)
+
+
+//Pruebas tienen muchos nombres
+//Test suite
+describe('Example Component', ()=>{
+
+  //Test piezas individuales de evaluación pequeña
+  test( 'Debe de ser mayor a 10', () =>{
+
+      //Arreglar
+      let value = 10
+
+      //Actuar
+      value += 2
+      //Observar el resultado
+      //https://jestjs.io/docs/expect#tobegreaterthannumber--bigint
+      expect(value).toBeGreaterThan(10)
   })
+
 })
