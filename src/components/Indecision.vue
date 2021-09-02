@@ -27,15 +27,23 @@ export default {
     methods:{
         async getAnswer(){
 
-            this.answer = 'Pensando...'
+            try {
+                this.answer = 'Pensando...'
+    
+                const {answer, image} = await fetch('https://yesno.wtf/api')
+                    .then( res => res.json() )
+    
+                //const yesTranslate = ("yes") ? 'Si!' : 'No!' 
+    
+                this.answer = answer === 'yes' ? 'Si!' : 'No!'
+                this.img = image
+                
+            } catch (error) {
+                console.log('IndecisionComponent: ',error)
+                this.answer = 'No se pudo cargar el API'
+                this.img = null
+            }
 
-            const {answer, image} = await fetch('https://yesno.wtf/api')
-                .then( res => res.json() )
-
-            //const yesTranslate = ("yes") ? 'Si!' : 'No!' 
-
-            this.answer = answer === 'yes' ? 'Si!' : 'No!'
-            this.img = image
 
         }
     },
@@ -43,6 +51,7 @@ export default {
     watch: {
         question( value, oldValue ){
             this.isValidQUestion = false
+            console.log({value})
             if(!value.includes('?')) return 
             this.isValidQUestion = true
             //TODO: Realizar petición http.
